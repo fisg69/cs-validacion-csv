@@ -3,7 +3,7 @@ import csv
 YEAR_MIN = 1900
 YEAR_MAX = 2100
 FIELD_COUNT = 19
-FILE = r".\Automatizacion\Archivos SIGE\Base indicadores de gestion 2024-01.csv"
+FILE = r".\archivos\test.csv"
 
 
 def leer_archivo(archivo: str):
