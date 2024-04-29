@@ -1,5 +1,4 @@
 import csv
-from time import time
 
 YEAR_MIN = 1900
 YEAR_MAX = 2100
@@ -273,8 +272,6 @@ with open(
     archivoCSV = csv.reader(archivo, delimiter=",", quotechar='"')
     registros = [registro for registro in archivoCSV][1:]
 
-
-t0 = time()
 validar_numero_campos(registros, FIELD_COUNT)
 validar_fecha(registros, 1)
 validar_entero(registros, 2)
@@ -287,6 +284,5 @@ validar_flotante(registros, 14)
 validar_flotante(registros, 15)
 validar_entero(registros, 16)
 validar_si_no(registros, 19)
-t1 = time()
 
-print(f"Validación completada en {t1-t0}")
+print(f"Validación completada")
