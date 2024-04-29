@@ -3,7 +3,26 @@ import csv
 YEAR_MIN = 1900
 YEAR_MAX = 2100
 FIELD_COUNT = 19
-FILE = "test.csv"
+FILE = r".\Automatizacion\Archivos SIGE\Base indicadores de gestion 2024-01.csv"
+
+
+def leer_archivo(archivo: str):
+    """Abre el archivo CSV en la ruta `archivo`, lee y lo convierte
+    a una lista de listas de strings donde cada fila es un registro
+    y cada columna un campo
+    """
+
+    # Comprueba que sea un archivo csv
+    if not archivo.endswith(".csv"):
+        raise RuntimeError("El archivo no es un CSV.")
+
+    try:
+        # Abre y retorna la lista
+        with open(archivo, mode="r", newline="") as ar:
+            archivoCSV = csv.reader(ar, delimiter=",", quotechar='"')
+            return [registro for registro in archivoCSV][1:]
+    except:
+        raise FileNotFoundError("No existe el archivo: " + archivo)
 
 
 def validar_numero_campos(registros: list[list[str]], limite: int):
@@ -263,16 +282,7 @@ def biciesto(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-# Abre el archivo en modo lectura
-with open(
-    FILE,
-    mode="r",
-    newline="",
-) as archivo:
-    # Lee el archivo y convierte a una lista de registros
-    archivoCSV = csv.reader(archivo, delimiter=",", quotechar='"')
-    registros = [registro for registro in archivoCSV][1:]
-
+registros = leer_archivo(FILE)
 validar_numero_campos(registros, FIELD_COUNT)
 validar_fecha(registros, 1)
 validar_entero(registros, 2)
