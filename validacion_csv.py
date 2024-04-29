@@ -3,6 +3,7 @@ import csv
 YEAR_MIN = 1900
 YEAR_MAX = 2100
 FIELD_COUNT = 19
+FILE = "test.csv"
 
 
 def validar_numero_campos(registros: list[list[str]], limite: int):
@@ -264,7 +265,7 @@ def biciesto(year):
 
 # Abre el archivo en modo lectura
 with open(
-    r"C:\Users\poros\Documents\Coding\Python\Centrosur\Automatizacion\Archivos SIGE\Base indicadores de gestion 2024-01.csv",
+    FILE,
     mode="r",
     newline="",
 ) as archivo:
