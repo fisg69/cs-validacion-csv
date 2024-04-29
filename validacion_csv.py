@@ -17,7 +17,7 @@ def leer_archivo(archivo: str):
         raise RuntimeError("El archivo no es un CSV.")
 
     try:
-        # Abre y retorna la lista
+        # Abre el archivo y retorna la lista
         with open(archivo, mode="r", newline="") as ar:
             archivoCSV = csv.reader(ar, delimiter=",", quotechar='"')
             return [registro for registro in archivoCSV][1:]
